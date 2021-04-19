@@ -27,7 +27,7 @@ public class UploadFileServicesImpl implements IUploadFileService {
 		Path filePath = getImagePath(imageName);
 		log.info(filePath.toString());
 		Resource rsrc = new UrlResource(filePath.toUri());	
-		
+		 
 		if(!rsrc.exists() && !rsrc.isReadable()) {
 			filePath = Paths.get("src/main/resources/static/images").resolve("no_photo.png").toAbsolutePath();
 			rsrc = new UrlResource(filePath.toUri());	
