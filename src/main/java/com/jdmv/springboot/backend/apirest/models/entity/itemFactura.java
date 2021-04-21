@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +28,7 @@ public class itemFactura implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	//@JoinColumn(name="producto_id") optional, by default will do in this way
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Producto producto;
 	
 	public Double getAmount() {

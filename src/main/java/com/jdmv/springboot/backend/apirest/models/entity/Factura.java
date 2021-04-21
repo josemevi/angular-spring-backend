@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,10 +49,12 @@ public class Factura implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_id")
+	@JsonIgnoreProperties({"facturas","hibernateLazyInitializer","handler"})
 	private Cliente cliente;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
 	@JoinColumn(name = "factura_id") //required to specify if we don't create a factura field inside itemFactura clas, the bd field will be created at item_factura table
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private List<itemFactura> items;
 	
 	@PrePersist
