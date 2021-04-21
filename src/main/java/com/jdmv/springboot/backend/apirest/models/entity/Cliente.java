@@ -93,10 +93,6 @@ public class Cliente implements Serializable{
 	private List<Factura> facturas;
 
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 }
