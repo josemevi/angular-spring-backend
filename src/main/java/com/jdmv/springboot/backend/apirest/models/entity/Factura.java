@@ -25,7 +25,7 @@ import lombok.Setter;
 
 @Setter @Getter
 @Entity
-@Table(name = "factura")
+@Table(name = "facturas")
 public class Factura implements Serializable {
 	
 	
