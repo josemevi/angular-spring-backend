@@ -3,9 +3,11 @@ package com.jdmv.springboot.backend.apirest.models.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -22,8 +24,12 @@ public class itemFactura implements Serializable {
 	
 	private Integer cantidad;
 	
-	public Double calculateTotal() {
-		return this.cantidad.doubleValue();
+	@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name="producto_id") optional, by default will do in this way
+	private Producto producto;
+	
+	public Double getAmount() {
+		return this.cantidad.doubleValue() * producto.getPrecio();
 	}
 	private static final long serialVersionUID = 1L;
 	

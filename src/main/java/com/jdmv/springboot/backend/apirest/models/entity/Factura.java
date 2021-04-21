@@ -57,6 +57,14 @@ public class Factura implements Serializable {
 	public void preLoadDate() {
 		this.createAt = new Date();
 	}
+	
+	public Double getTotal() {
+		Double total = 0.00;
+		for(itemFactura item: items) {
+			total += item.getAmount();
+		}
+		return total;
+	}
 
 	private static final long serialVersionUID = 1L;
 
