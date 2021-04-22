@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.jdmv.springboot.backend.apirest.models.entity.Cliente;
+import com.jdmv.springboot.backend.apirest.models.entity.Factura;
 import com.jdmv.springboot.backend.apirest.models.entity.Region;
 
 public interface IClienteService  {
@@ -21,6 +22,14 @@ public interface IClienteService  {
 	public void delete(Long id);
 	
 	public List <Region> Regions();
+	
+	
+//	Adding factura methods to the client Service since they're related to each other
+	public Factura findFacturaById(Long id);
+	
+	public Factura saveFactura(Factura factura);
+	
+	public void deleteFacturabyId(Long id);
 	
 	
 }
