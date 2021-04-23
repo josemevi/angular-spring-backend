@@ -1,7 +1,6 @@
 package com.jdmv.springboot.backend.apirest.models.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdmv.springboot.backend.apirest.models.dao.IClienteDao;
 import com.jdmv.springboot.backend.apirest.models.dao.IFacturaDao;
+import com.jdmv.springboot.backend.apirest.models.dao.IProductoDao;
 import com.jdmv.springboot.backend.apirest.models.entity.Cliente;
 import com.jdmv.springboot.backend.apirest.models.entity.Factura;
+import com.jdmv.springboot.backend.apirest.models.entity.Producto;
 import com.jdmv.springboot.backend.apirest.models.entity.Region;
 
 @Service //marks the class as a component of service inside spring context
@@ -23,6 +24,9 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	@Autowired
 	private IFacturaDao facturaDao;
+	
+	@Autowired
+	private IProductoDao productoDao;
 
 	@Override
 	@Transactional(readOnly = true) //overwrites the transactionality of the DAO class NOTE: if a custom method is created in the DAO class there must be the this annotation and not here. 
@@ -81,6 +85,12 @@ public class ClienteServiceImpl implements IClienteService{
 	public void deleteFacturabyId(Long id) {
 		facturaDao.deleteById(id);
 		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Producto> findProductoByNombre(String term) {
+		return productoDao.findByNombre(term);
 	}
 	
 	
