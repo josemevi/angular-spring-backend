@@ -64,7 +64,7 @@ public class ClienteRestController {
 	}
 	
 
-	//@Secured({"ROLE_ADMIN","ROLE_USER"})
+	@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@GetMapping("/clientes/{id}") 
 	public ResponseEntity<?> show(@PathVariable Long id) {   //@PathVariable to take param from uri
 		
@@ -253,7 +253,6 @@ public class ClienteRestController {
 		try {
 			rsrc = uploadService.downloadImage(photoName);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
