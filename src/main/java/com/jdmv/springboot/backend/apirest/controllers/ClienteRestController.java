@@ -36,7 +36,7 @@ import com.jdmv.springboot.backend.apirest.models.entity.Region;
 import com.jdmv.springboot.backend.apirest.models.services.IClienteService;
 import com.jdmv.springboot.backend.apirest.models.services.IUploadFileService;
 
-@CrossOrigin(origins = {"http://localhost:4200"} ) 
+@CrossOrigin(origins = {"http://localhost:4200", "*"}) 
 @RestController //Specifies the class as a REST Controller for the MVC
 @RequestMapping("/api") //Generates the URL for End points
 public class ClienteRestController {
