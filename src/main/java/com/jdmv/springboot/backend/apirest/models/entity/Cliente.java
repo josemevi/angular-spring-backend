@@ -91,7 +91,7 @@ public class Cliente implements Serializable{
 	
 	//mappedBy has to specify the name of the class attribute of the other table sharing the relation.
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = {"cliente", "hibernateLazyInitializer","handler"}, allowSetters = true) //resolving recursion problem 
+	@JsonIgnoreProperties(value = {"cliente", "hibernateLazyInitializer","handler"})
 	private List<Factura> facturas;
 
 
