@@ -49,7 +49,7 @@ public class Factura implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_id")
-	@JsonIgnoreProperties({"facturas","hibernateLazyInitializer","handler"})
+	@JsonIgnoreProperties(value = {"facturas","hibernateLazyInitializer","handler"}, allowGetters = true) //allowSetters resolves recursion problem while editing clients
 	private Cliente cliente;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
